@@ -1,0 +1,79 @@
+body {
+    background-color: #222;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 100px);
+    overflow: hidden;
+}
+
+.content {
+    width: 800px;
+}
+
+.loading_bar {
+    border-radius: 10px;
+    width: 500px;
+    height: 50px;
+    background-color: #F498AD;
+    display: none;
+}
+
+@keyframes loading {
+    from {
+        width: 20px;
+    }
+
+    to {
+        width: 500px;
+    }
+}
+
+@keyframes color-change {
+    from {
+        background-color: #F498AD;
+    }
+
+    50% {
+        background-color: #7F6EDB;}
+    to {
+        background-color: #2E9AFF;
+    }
+}
+
+@keyframes flash-dots {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+.flashing_dots {
+    position: absolute;
+    overflow: hidden;
+    animation: flash-dots 2s infinite normal running cubic-bezier(0.895, 0.03, 0.685, 0.22) both;
+}
+
+/* .content:hover .loading_bar {
+    display: block;
+    animation-name: loading;
+    animation-duration: 10s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-out;
+    animation-delay: -0.1s;
+    animation-fill-mode: forwards;
+} */
+
+.content:hover .loading_bar {
+    display: block;
+    animation: color-change 10s 1 ease-out -0.1s forwards,
+               loading 10s 1 ease-out -0.1s forwards;
+}
+
+h1 {
+    color: #fff;
+    font-family: sans-serif;
+}
